@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url("ring.jpg"); /* Use a high-quality jewelry background */
+      background-size: cover;
+      background-position: center;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      backdrop-filter: blur(2px);
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 50px 35px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #333;
+    }
+
+    .form-container h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #D4AF37;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.9);
+      font-size: 15px;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    .form-container input:focus {
+      outline: none;
+      border-color: #D4AF37;
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 16px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #D4AF37, #c19428);
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .form-container button:hover {
+      background: linear-gradient(135deg, #b88a2a, #9e7723);
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 500px) {
+      .form-container {
+        padding: 35px 25px;
+      }
+
+      .form-container h2 {
+        font-size: 24px;
+      }
+
+      .form-container input,
+      .form-container button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Register for Exclusive Offers</h2>
+    <form action="reg.php" method="POST">
+      <input type="text" name="firstName" placeholder="First Name *" required>
+      <input type="text" name="lastName" placeholder="Last Name *" required>
+      <input type="tel" name="phone" placeholder="Phone *" required>
+      <input type="email" name="email" placeholder="Email *" required>
+      <input type="text" name="address" placeholder="Address *" required>
+      <input type="text" name="city" placeholder="City *" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+</body>
+</html>

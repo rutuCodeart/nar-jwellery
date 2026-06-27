@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NAR Jewellery - Checkout</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfaf6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .checkout-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      font-family: 'Georgia', serif;
+      color: #b08d57;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .product {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      border: 1px solid #eee;
+      padding: 15px;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    .product img {
+      border-radius: 8px;
+    }
+
+    input[type="text"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      background: #fefefe;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #b08d57;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #9a764a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="checkout-container">
+    <h1>NAR Jewellery</h1>
+    <h2>Secure Checkout</h2>
+
+    <div class="section">
+      <h3>Order Summary</h3>
+      <div id="orderSummary"></div>
+
+      <h3 style="margin-top: 30px;">Shipping Information</h3>
+      <form id="checkoutForm">
+        <input type="text" placeholder="Full Name" required />
+        <input type="text" placeholder="Street Address" required />
+        <input type="text" placeholder="City" required />
+        <input type="text" placeholder="State" required />
+        <input type="text" placeholder="PIN Code" required />
+        <input type="tel" placeholder="Phone Number" required />
+
+        <!-- Payment Method -->
+        <h3>Payment Method</h3>
+        <label><input type="radio" name="payment" value="cod" checked /> Cash on Delivery</label><br/>
+        <label><input type="radio" name="payment" value="online" /> Online Payment (Credit/Debit/UPI/QR)</label><br/><br/>
+
+        <button type="submit">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const summaryContainer = document.getElementById('orderSummary');
+
+  let items = [];
+
+  // First, check for checkoutItems (used in Buy Now)
+  const checkoutItems = JSON.parse(localStorage.getItem('checkoutItems'));
+  if (checkoutItems) {
+    items = checkoutItems;
+  } else {
+    // If not found, check for full cart
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    for (let id in cart) {
+      items.push(cart[id]);
+    }
+  }
+
+  let total = 0;
+  items.forEach(item => {
+    total += item.price * item.qty;
+
+    const div = document.createElement('div');
+    div.className = 'product';
+    div.innerHTML = `
+      <img src="${item.img}" width="100" height="100" alt="${item.name}" />
+      <div>
+        <p><strong>Product:</strong> ${item.name}</p>
+        <p><strong>Price:</strong> ₹${item.price.toLocaleString()}</p>
+        <p><strong>Quantity:</strong> ${item.qty}</p>
+        <p><strong>Subtotal:</strong> ₹${(item.price * item.qty).toLocaleString()}</p>
+      </div>
+    `;
+    summaryContainer.appendChild(div);
+  });
+
+  const totalEl = document.createElement('p');
+  totalEl.innerHTML = `<strong>Total Amount:</strong> ₹${total.toLocaleString()}`;
+  summaryContainer.appendChild(totalEl);
+
+  // Attach form handler
+  const form = document.getElementById("checkoutForm");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert('✅ Order placed successfully!');
+
+    // Clear both cart and checkoutItems
+    localStorage.removeItem('cart');
+    localStorage.removeItem('checkoutItems');
+
+    window.location.href = "index.html";
+  });
+});
+
+  </script>
+
+</body>
+</html>

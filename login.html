@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fdf6e3;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background-color: #fff8f0;
+      padding: 40px 30px;
+      width: 320px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .container h2 {
+      color: #a0522d;
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+
+    label {
+      font-size: 16px;
+      color: #5a5a5a;
+      display: block;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+
+    input.inp1 {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      background-color: #fff;
+      color: #333;
+    }
+
+    input.inp1:focus {
+      outline: none;
+      border-color: #ffa07a;
+      box-shadow: 0 0 0 3px rgba(255, 160, 122, 0.3);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #f4a261;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #e07b39;
+      transform: scale(1.03);
+    }
+
+    p {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    p a {
+      color: #d2691e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    p a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form action="login.php" method="POST">
+      <label for="mobile">Enter Mobile Number</label>
+      <input type="text" id="mobile" name="mobile" placeholder="Enter mobile number" class="inp1">
+      <button type="submit">Submit</button>
+    </form>
+    <p>New user? <a href="Register.html">Please register here!</a></p>
+  </div>
+</body>
+</html>
